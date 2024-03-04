@@ -2,21 +2,29 @@
 
 ## Welcome to our Recipe Management System!
 
-Welcome to our Recipe Management System! This system allows users to add, edit, delete, and favorite recipes, making it easier to organize and access their favorite dishes.
+Welcome to our Recipe Management System! This system makes it easy for you to organize and access your favorite recipes. You can add, edit, delete, and favorite recipes hassle-free.
 
 ### Features
 
 #### Search Functionality
-Upon visiting the website, users are greeted with a search bar and a message indicating that there are currently no recipes available. After adding recipes, users can utilize the search function to filter recipes by title and ingredients. The search feature dynamically filters the displayed recipes based on any matching letters or words in the recipe titles or ingredients.
+When you visit our website, you'll see a search bar. If you haven't added any recipes yet, it'll let you know. Once you've added recipes, you can use the search bar to find recipes by their titles or ingredients. Just type in what you're looking for, and the system will show you matching recipes in real-time.
 
 #### Recipe Actions
-Each recipe displayed on the website comes with two buttons:
+Each recipe has two buttons:
 
-- **View Button**: Redirects users to a detailed page for the selected recipe.
-- **Actions Button**: Provides users with various actions they can perform on the recipe, including:
-  - Edit: Allows users to modify the recipe details, add more ingredients, or update instructions.
-  - Delete: Deletes the recipe from the system.
-  - Add to Favorites: Adds the recipe to the user's favorites list.
+- **View Button**: Takes you to a detailed page for that recipe.
+- **Actions Button**: Offers various options:
+  - Edit: Modify the recipe details, ingredients, or instructions.
+  - Delete: Remove the recipe from the system.
+  - Add to Favorites: Save the recipe to your favorites list.
 
 #### Favorites Management
-Users can access their favorite recipes by clicking on the "Favorites" navigation item. Here, they can view all their favorite recipes and easily remove them from their favorites list. Deleting a recipe from the system automatically removes it from the favorites list if it has been favorited.
+You can access your favorite recipes by clicking on "Favorites." Here, you'll see all your favorite recipes and can easily remove them from the list. If you delete a recipe from the system, it's automatically removed from your favorites too.
+
+#### Setup
+1. Clone the repository.
+2. Navigate to the Recipes folder.
+3. Run `npm install`.
+4. If you don't have it already, install json-server globally: `npm install -g json-server`.
+5. Go to the src/json-server folder and run `json-server --watch recipes.json`.
+6. Run `ng serve -o` to start the server and open the system in your browser.
