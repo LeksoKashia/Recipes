@@ -16,7 +16,7 @@ export class RecipesService {
     return this.http.get<Recipe[]>(this.apiUrl);
   }
   
-  getRecipeById(id: number): Observable<Recipe> {
+  getRecipeById(id: number | string): Observable<Recipe> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Recipe>(url);
   }

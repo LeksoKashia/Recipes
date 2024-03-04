@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Recipe } from 'src/app/model/Recipe.model';
 import { RecipesService } from 'src/app/services/recipes.service';
 
@@ -17,7 +17,8 @@ export class EditRecipeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private recipesService: RecipesService
+    private recipesService: RecipesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +46,7 @@ export class EditRecipeComponent implements OnInit {
     this.recipeForm.patchValue({
       title: recipe.title,
       description: recipe.description,
+      thumbnail: recipe.thumbnail
     });
   
     this.thumbnailPath = recipe.thumbnail;
@@ -131,6 +133,7 @@ export class EditRecipeComponent implements OnInit {
       this.recipesService.updateRecipe(updatedRecipe).subscribe(
         updatedRecipe => {
           console.log('Recipe updated successfully:', updatedRecipe);
+          this.router.navigate(['/']);
         },
         error => {
           console.error('Error updating recipe:', error);

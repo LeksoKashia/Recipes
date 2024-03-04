@@ -1,0 +1,14 @@
+<div class="favorite-recipes-container">
+  <h1>Favorite Recipes</h1>
+  <div *ngIf="favoriteRecipes.length > 0" class="recipe-list">
+    <div *ngFor="let recipe of favoriteRecipes" class="recipe-item">
+      <img [src]="recipe.thumbnail" alt="{{ recipe.title }}" class="recipe-thumbnail">
+      <div class="recipe-details">
+        <h2>{{ recipe.title }}</h2>
+        <button class="btn btn-success" [routerLink]="['recipes', recipe.id]">View</button>
+        <button class="btn btn-danger" (click)="removeFromFavorites(recipe.id)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <p *ngIf="favoriteRecipes.length == 0">No favorite recipes</p>
+</div>

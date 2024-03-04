@@ -1,66 +1,90 @@
 .recipe-details-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  margin-top: 100px;
-  margin-bottom: 100px;
-  background-color: #d82020;
-  background-image: linear-gradient(147deg, #d82020 0%, #c59169 74%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.title {
-  font-size: 32px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.recipe-thumbnail {
+.card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 800px;
   width: 100%;
-  height: auto;
-  margin-bottom: 20px;
 }
 
-.description {
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: #333;
-  background-color: #c59169;
-  padding: 7px;
-  border-radius: 7px;
+.header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+
+  .title {
+    font-size: 24px;
+    margin: 0;
+  }
+
+  .subtitle {
+    margin-top: 5px;
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 0;
+  }
 }
 
-.section {
-  margin-bottom: 30px;
-}
+.content {
+  display: flex;
 
-.subtitle {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333;
-}
+  .left {
+    flex: 1;
+    padding: 20px;
 
-.ingredient-list,
-.instruction-list {
-  list-style: none;
-  padding-left: 0;
-}
+    img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
 
-.ingredient,
-.instruction {
-  font-size: 16px;
-  margin-bottom: 5px;
-  color: #161616;
-}
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
 
-.ingredient:before {
-  content: "•";
-  margin-right: 5px;
-  color: #2c2a2a;
-}
+  .right {
+    flex: 2;
+    padding: 20px;
 
-.instruction:before {
-  content: counter(step) ".";
-  counter-increment: step;
-  margin-right: 5px;
-  font-weight: bold;
+    .section-title {
+      font-size: 20px;
+      margin-top: 0;
+    }
+
+    .description {
+      margin-top: 10px;
+    }
+
+    .ingredient-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      .ingredient-row {
+        border-bottom: 1px solid #ddd;
+
+        .ingredient {
+          padding: 10px;
+        }
+      }
+    }
+
+    .instruction-list {
+      padding-left: 20px;
+
+      .instruction {
+        margin-top: 10px;
+      }
+    }
+  }
 }

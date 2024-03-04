@@ -1,0 +1,47 @@
+.favorite-recipes-container {
+  position: absolute;
+  background-color: rgba(250, 235, 215, 0.44);
+  right: 0;
+  top: calc(-100px + 56px);
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 0 20px;
+  backdrop-filter: blur(3px);
+  padding: 20px;  
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .recipe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .recipe-item {
+      display: flex;
+      gap: 10px;
+
+      .recipe-thumbnail {
+        height: 100px;
+        width: 70px;
+      }
+
+      .recipe-details {
+        h2 {
+          margin-bottom: 5px;
+        }
+
+        button {
+          margin-right: 7px;
+        }
+      }
+    }
+  }
+
+  p {
+    margin-top: 10px;
+    text-align: left;
+  }
+}

@@ -1,5 +1,13 @@
-<div class="recipe-container">
-  <div *ngFor="let recipe of recipes">
-    <app-recipe (deleteRecipeId)="deleteRecipe($event)" [recipe]="recipe"></app-recipe>
+<div class="main">
+  <div class="recipe-container" *ngIf="recipes && recipes.length > 0; else noRecipes">
+    <div *ngFor="let recipe of recipes">
+      <app-recipe (deleteRecipeId)="deleteRecipe($event)" [recipe]="recipe"></app-recipe>
+    </div>
   </div>
+  <ng-template #noRecipes>
+    <div class="empty">
+      <h1>No recipes found</h1>
+      <button class="btn btn-info" [routerLink]="['/addRecipe']">Add Recipe</button>
+    </div>
+  </ng-template>
 </div>

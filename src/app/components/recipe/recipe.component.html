@@ -14,9 +14,12 @@
       <p class="close-text" (click)="toggleOverlay()">close</p>
     </div>
     <div class="actions">
-      <button [routerLink]="['editRecipe', recipe.id]" class="btn btn-edit"  routerLink="editRecipe">Edit</button>
+      <button [routerLink]="['editRecipe', recipe.id]" class="btn btn-edit" routerLink="editRecipe">Edit</button>
       <button (click)="emitDeletion(recipe.id)" class="btn btn-delete">Delete</button>
-      <button class="btn btn-info">Add to Favorites</button>
+      <button (click)="addToFavorites(recipe)" class="btn"
+        [ngClass]="{ 'btn-info': !isFavorite(recipe), 'btn-danger': isFavorite(recipe) }">
+        {{ isFavorite(recipe) ? 'Remove from Favorites' : 'Add to Favorites' }}
+      </button>
     </div>
 
   </div>

@@ -5,7 +5,7 @@
 
     <div class="form-group">
       <label for="title" class="form-label">Title:</label>
-      <input type="text" id="title" name="title" formControlName="title" class="form-control">
+      <input type="text" id="title" name="title" formControlName="title" class="form-control" placeholder="Enter title">
       <div *ngIf="recipeForm.get('title').invalid && recipeForm.get('title').touched" class="error-message">
         Title is required
       </div>
@@ -13,7 +13,7 @@
 
     <div class="form-group">
       <label for="description" class="form-label">Description:</label>
-      <input type="text" id="description" name="description" formControlName="description" class="form-control">
+      <input type="text" id="description" name="description" formControlName="description" class="form-control" placeholder="Enter description">
       <div *ngIf="recipeForm.get('description').invalid && recipeForm.get('description').touched" class="error-message">
         Description is required
       </div>
@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <label for="thumbnail" class="form-label">Thumbnail:</label>
-      <input type="file" id="thumbnail" name="thumbnail" (change)="onThumbnailChange($event)" class="form-control">
+      <input type="file" id="thumbnail" name="thumbnail" (change)="onThumbnailChange($event)" class="form-control" placeholder="Choose thumbnail">
       <div *ngIf="recipeForm.get('thumbnail').invalid && recipeForm.get('thumbnail').touched" class="error-message">
         Thumbnail is required.
       </div>
@@ -31,7 +31,7 @@
     <div formArrayName="ingredients" class="form-group">
       <div *ngFor="let ingredientControl of recipeForm.get('ingredients')['controls']; let i = index">
         <div class="ingredient-action">
-          <input type="text" [formControlName]="i" class="form-control">
+          <input type="text" [formControlName]="i" class="form-control" placeholder="Enter ingredient">
           <button type="button" (click)="removeIngredient(i)" class="btn btn-danger"
             [disabled]="isIngredientRemovable()">Remove</button>
         </div>
@@ -49,7 +49,7 @@
     <div formArrayName="instructions" class="form-group">
       <div *ngFor="let instructionControl of recipeForm.get('instructions')['controls']; let i = index">
         <div class="ingredient-action">
-          <input type="text" [formControlName]="i" class="form-control">
+          <input type="text" [formControlName]="i" class="form-control" placeholder="Enter instruction">
           <button type="button" (click)="removeInstruction(i)" class="btn btn-danger"
             [disabled]="isInstructionRemovable()">Remove</button>
         </div>

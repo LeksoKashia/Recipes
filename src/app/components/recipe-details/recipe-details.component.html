@@ -1,22 +1,39 @@
 <app-header></app-header>
 
 <div class="recipe-details-container">
-  <h1 class="title">{{ recipe.title }}</h1>
-  <img [src]="recipe.thumbnail" alt="{{ recipe.title }}" class="recipe-thumbnail">
-  <h2 class="subtitle">Description</h2>
-  <p class="description">{{ recipe.description }}</p>
+  <div class="card">
+    <div class="header">
+      <div>
+        <h1 class="title">{{ recipe.title }}</h1>
+        <p class="subtitle">Recipe Details</p>
+      </div>
 
-  <div class="section">
-    <h2 class="subtitle">Ingredients</h2>
-    <ul class="ingredient-list">
-      <li *ngFor="let ingredient of recipe.ingredients" class="ingredient">{{ ingredient }}</li>
-    </ul>
-  </div>
+      <button class="btn btn-primary" routerLink=""> Back</button>
+    </div>
+    <div class="content">
+      <div class="left">
+        <img [src]="recipe.thumbnail" alt="{{ recipe.title }}" class="recipe-thumbnail">
+      </div>
+      <div class="right">
+        <h2 class="section-title">Description</h2>
+        <p class="description">{{ recipe.description }}</p>
 
-  <div class="section">
-    <h2 class="subtitle">Instructions</h2>
-    <ol class="instruction-list">
-      <li *ngFor="let instruction of recipe.instructions" class="instruction">{{ instruction }}</li>
-    </ol>
+        <div class="section">
+          <h2 class="section-title">Ingredients</h2>
+          <table class="ingredient-table">
+            <tr *ngFor="let ingredient of recipe.ingredients" class="ingredient-row">
+              <td class="ingredient">{{ ingredient }}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Instructions</h2>
+          <ol class="instruction-list">
+            <li *ngFor="let instruction of recipe.instructions" class="instruction">{{ instruction }}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

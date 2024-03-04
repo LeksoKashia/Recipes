@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Recipe } from 'src/app/model/Recipe.model';
 import { RecipesService } from 'src/app/services/recipes.service';
+import { RecipeListComponent } from '../recipe-list/recipe-list.component';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,6 @@ export class HomeComponent implements OnInit{
   
   recipes: Recipe[];
   filteredRecipes: Recipe[];
-  searchTerm: string;
 
   ngOnInit(): void {
     this.getRecipes();
@@ -27,15 +27,21 @@ export class HomeComponent implements OnInit{
       });
   }
 
-  filterRecipes(): void {
-    if (!this.searchTerm) {
+  filterRecipes(searchTerm: string ): void {
+    if (!searchTerm) {
       this.filteredRecipes = this.recipes;
       return;
     }
-
-    this.filteredRecipes = this.recipes.filter(recipe =>
-      recipe.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  
+    this.filteredRecipes = this.recipes.filter(recipe => {
+      const titleMatch = recipe.title.toLowerCase().includes(searchTerm.toLowerCase());
+  
+      const ingredientMatch = recipe.ingredients.some(ingredient =>
+        ingredient.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+  
+      return titleMatch || ingredientMatch;
+    });
   }
 
  

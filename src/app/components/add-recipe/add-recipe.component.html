@@ -2,7 +2,7 @@
 <form class="form-container" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label class="form-label" for="title">Title:</label>
-    <input type="text" id="title" class="form-control" formControlName="title">
+    <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter Title">
     <div *ngIf="recipeForm.get('title').invalid && recipeForm.get('title').touched" class="error-message">
       Title is required.
     </div>
@@ -10,7 +10,7 @@
 
   <div class="form-group">
     <label class="form-label" for="description">Description:</label>
-    <textarea id="description" class="form-control" formControlName="description"></textarea>
+    <textarea id="description" class="form-control" formControlName="description" placeholder="Enter Description"></textarea>
     <div *ngIf="recipeForm.get('description').invalid && recipeForm.get('description').touched" class="error-message">
       Description is required.
     </div>
@@ -18,7 +18,7 @@
 
   <div class="form-group">
     <label class="form-label" for="thumbnail">Thumbnail:</label>
-    <input type="file" id="thumbnail" class="form-control" (change)="onThumbnailChange($event)">
+    <input type="file" id="thumbnail" class="form-control" (change)="onThumbnailChange($event)" placeholder="Choose Thumbnail">
     <div *ngIf="recipeForm.get('thumbnail').invalid && recipeForm.get('thumbnail').touched" class="error-message">
       Thumbnail is required.
     </div>
@@ -29,8 +29,9 @@
       <div class="form-group">
         <label class="form-label" for="ingredient{{i}}">Ingredient {{i + 1}}:</label>
         <div class="ingredient-action">
-          <input type="text" id="ingredient{{i}}" class="form-control" formControlName="name">
-          <button type="button" class="btn btn-danger" (click)="removeIngredient(i)">Remove</button>
+          <input type="text" id="ingredient{{i}}" class="form-control" formControlName="name" placeholder="Enter Ingredient">
+          <button type="button" class="btn btn-danger" (click)="removeIngredient(i)"
+            [disabled]="ingredients.controls.length === 1">Remove</button>
         </div>
 
       </div>
@@ -40,14 +41,15 @@
   </div>
 
   <hr class="separator">
-  
+
   <div formArrayName="instructions">
     <div *ngFor="let instructionControl of instructions.controls; let i = index">
       <div class="form-group">
         <label class="form-label" for="instruction{{i}}">Instruction {{i + 1}}:</label>
         <div class="ingredient-action">
-          <input id="instruction{{i}}" class="form-control" formControlName="{{i}}" />
-          <button type="button" class="btn btn-danger" (click)="removeInstruction(i)">Remove</button>
+          <input id="instruction{{i}}" class="form-control" formControlName="{{i}}" placeholder="Enter Instruction"/>
+          <button type="button" class="btn btn-danger" (click)="removeInstruction(i)"
+            [disabled]="instructions.controls.length === 1">Remove</button>
         </div>
 
       </div>

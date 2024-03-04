@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Recipe } from 'src/app/model/Recipe.model';
 import { RecipesService } from 'src/app/services/recipes.service';
 
@@ -11,7 +12,7 @@ import { RecipesService } from 'src/app/services/recipes.service';
 export class AddRecipeComponent implements OnInit {
   recipeForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private recipeService: RecipesService) { }
+  constructor(private formBuilder: FormBuilder, private recipeService: RecipesService, private router: Router) { }
 
   ngOnInit(): void {
     this.recipeForm = this.formBuilder.group({
@@ -89,6 +90,7 @@ export class AddRecipeComponent implements OnInit {
       this.recipeService.addRecipe(recipe).subscribe(() => {
         console.log('Recipe added successfully.');
         this.recipeForm.reset();
+        this.router.navigate(['/']);
       }, error => {
         console.error('Error adding recipe:', error);
       });

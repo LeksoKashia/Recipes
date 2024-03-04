@@ -1,1 +1,4 @@
-<p>search works!</p>
+<div class="search-container">
+  <input class="search-input" type="text" [(ngModel)]="searchTerm" (input)="filterRecipes()"
+    placeholder="Search recipes...">
+</div>
