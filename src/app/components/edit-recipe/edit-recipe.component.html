@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div *ngIf="recipe">
+  <h2>Edit Recipe</h2>
+  <form [formGroup]="recipeForm" (ngSubmit)="updateRecipe()" class="form-container">
+
+    <div class="form-group">
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" id="title" name="title" formControlName="title" class="form-control">
+      <div *ngIf="recipeForm.get('title').invalid && recipeForm.get('title').touched" class="error-message">
+        Title is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description" class="form-label">Description:</label>
+      <input type="text" id="description" name="description" formControlName="description" class="form-control">
+      <div *ngIf="recipeForm.get('description').invalid && recipeForm.get('description').touched" class="error-message">
+        Description is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="thumbnail" class="form-label">Thumbnail:</label>
+      <input type="file" id="thumbnail" name="thumbnail" (change)="onThumbnailChange($event)" class="form-control">
+      <div *ngIf="recipeForm.get('thumbnail').invalid && recipeForm.get('thumbnail').touched" class="error-message">
+        Thumbnail is required.
+      </div>
+      <img *ngIf="thumbnailPath" [src]="thumbnailPath" alt="Thumbnail" class="thumbnail-preview">
+    </div>
+
+    <div formArrayName="ingredients" class="form-group">
+      <div *ngFor="let ingredientControl of recipeForm.get('ingredients')['controls']; let i = index">
+        <div class="ingredient-action">
+          <input type="text" [formControlName]="i" class="form-control">
+          <button type="button" (click)="removeIngredient(i)" class="btn btn-danger"
+            [disabled]="isIngredientRemovable()">Remove</button>
+        </div>
+
+
+        <div *ngIf="ingredientControl.invalid && ingredientControl.touched" class="error-message">
+          Ingredient is required
+        </div>
+      </div>
+      <button type="button" (click)="addIngredient()" class="btn btn-primary">Add Ingredient</button>
+    </div>
+    
+    <hr class="separator">
+
+    <div formArrayName="instructions" class="form-group">
+      <div *ngFor="let instructionControl of recipeForm.get('instructions')['controls']; let i = index">
+        <div class="ingredient-action">
+          <input type="text" [formControlName]="i" class="form-control">
+          <button type="button" (click)="removeInstruction(i)" class="btn btn-danger"
+            [disabled]="isInstructionRemovable()">Remove</button>
+        </div>
+
+        <div *ngIf="instructionControl.invalid && instructionControl.touched" class="error-message">
+          Instruction is required
+        </div>
+      </div>
+      <button type="button" (click)="addInstruction()" class="btn btn-primary">Add Instruction</button>
+    </div>
+    <button type="submit" [disabled]="recipeForm.invalid" class="submit" >Update Recipe</button>
+    <div *ngIf="recipeForm.invalid && recipeForm.touched" class="error-message">
+      Please fill in all required fields
+    </div>
+  </form>
+</div>

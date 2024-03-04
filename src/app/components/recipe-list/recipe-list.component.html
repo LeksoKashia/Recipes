@@ -1,0 +1,5 @@
+<div class="recipe-container">
+  <div *ngFor="let recipe of recipes">
+    <app-recipe (deleteRecipeId)="deleteRecipe($event)" [recipe]="recipe"></app-recipe>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<app-header></app-header>
+<div class="search-container">
+  <input class="search-input" type="text" [(ngModel)]="searchTerm" (input)="filterRecipes()"
+    placeholder="Search recipes...">
+</div>
+<app-recipe-list [recipes]="filteredRecipes" (regenerate)="getRecipes()"></app-recipe-list>

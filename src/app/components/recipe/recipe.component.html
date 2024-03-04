@@ -1,0 +1,23 @@
+<div class="recipe-card">
+  <img [src]="recipe.thumbnail" alt="{{ recipe.title }}" class="recipe-thumbnail">
+  <div class="recipe-content">
+    <h2 class="recipe-title">{{ recipe.title }}</h2>
+    <p class="recipe-description">{{ recipe.description }}</p>
+    <div class="buttons">
+      <button class="btn btn-view" [routerLink]="['recipes', recipe.id]">View</button>
+      <button class="btn btn-success" (click)="toggleOverlay()">Actions</button>
+    </div>
+  </div>
+
+  <div *ngIf="actionsOverlay" class="overlay">
+    <div class="close-container">
+      <p class="close-text" (click)="toggleOverlay()">close</p>
+    </div>
+    <div class="actions">
+      <button [routerLink]="['editRecipe', recipe.id]" class="btn btn-edit"  routerLink="editRecipe">Edit</button>
+      <button (click)="emitDeletion(recipe.id)" class="btn btn-delete">Delete</button>
+      <button class="btn btn-info">Add to Favorites</button>
+    </div>
+
+  </div>
+</div>
